@@ -1,0 +1,18 @@
+import { Input } from '@chakra-ui/react'
+import React from 'react'
+
+export default function TwiraInput({placeholder,name,value,onChange,type}) {
+  return (
+    <Input placeholder={placeholder} 
+    size='lg'
+    bg='white'
+    name={name}
+    colorScheme='blue.400'
+    value={value}
+    onChange={onChange}
+    _focus={{borderColor:'gray.300'}}
+    autoComplete='off'
+    type={type}
+    />
+  )
+}
