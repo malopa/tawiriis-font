@@ -12,12 +12,12 @@ export default function SignupPage() {
     const [cpassword,setCPassword] = useState("")
     const [loading,setLoading] = useState(false)
 
-    const {register} =  useContext(AuthenticationContext)
+    const {login,error} =  useContext(AuthenticationContext)
 
     const hanleRegister = ()=>{
       if(!username || !password)return
         setLoading(!loading)
-        register({username,password})
+        login({username,password})
     }
 
     return (
@@ -26,11 +26,13 @@ export default function SignupPage() {
 
           <form className="w-[500px] m-auto  bg-white p-4 rounded-md">
             <div className="text-center text-2xl">Tawiri</div>
+            
             <div className="font-bold py-4">
               <h1>Log In</h1>
             </div>
+
             <TwiraInput
-            name='username'
+            name='email'
             value={username}
             placeholder='Enter your email'
             onChange={(e)=>setUsername(e.target.value)}
@@ -45,15 +47,7 @@ export default function SignupPage() {
                     />
              </div>
 
-             <div className="mt-4">
-                <TwiraInput
-                    name='cpassword'
-                    placeholder='Confirm password'
-                    value={cpassword}
-                    onChange={(e)=>setCPassword(e.target.value)}
-                    type='password'
-                    />
-             </div>
+             
 
             <div className="mt-4">
                 <PrimaryButton 

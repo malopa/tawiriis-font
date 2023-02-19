@@ -4,7 +4,7 @@ import React from 'react'
 export default function TwiraInput({placeholder,name,value,onChange,type}) {
   return (
     <Input placeholder={placeholder} 
-    size='lg'
+    size='md'
     bg='white'
     name={name}
     colorScheme='blue.400'

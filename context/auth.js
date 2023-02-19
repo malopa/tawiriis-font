@@ -14,7 +14,9 @@ export const AuthenticationProvider = ({children})=>{
     const router = useRouter();
 
 
-    useEffect(()=>checkIfUserLoggedIn(),[])
+    useEffect(()=>{
+        checkIfUserLoggedIn()
+    },[])
 
 
     const login = async ({username,password})=>{
