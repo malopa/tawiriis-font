@@ -19,11 +19,26 @@ export default async (req,res) =>{
             }
 
             try{
-                const {data} = await axios.post(`http://127.0.0.1:8000/api/token`,body,config);
+                const {data} = await axios.post(`${process.env.BASE_URL}api/token`,body,config);
                 accessToken = data.accessToken
+
+                if(accessToken){
+                    const userConfig = {
+                        headers:{
+                            'Accept':"application/json",
+                            "Authorization":"Bearer "+accessToken
+                        }
+                    }
+    
+                const userData = await axios.get(`${process.env.BASE_URL}api/user`,userConfig)
+    
+                res.status(200).json({user:userData,access:accessToken})
+                }
+
                 // inproduction change secure to true;
                 res.setHeader("Set-Cookie",cookie.serialize("refresh",accessToken,{httpOnly:true,secure:false,maxAge:60*60*24,path:'/'}))
                 // add sameSite:'strict'
+                
             }catch(error){
                 if(error.response){
                     console.error(error.response.data)
@@ -37,18 +52,7 @@ export default async (req,res) =>{
 
             }
             
-            if(accessToken){
-                const userConfig = {
-                    headers:{
-                        'Accept':"application/json",
-                        "Authorization":"Bearer "+accessToken
-                    }
-                }
-
-            // const userData = await axios.get('http://localhost:8000/user',userConfig)
-
-             return res.status(200).json({accessToken})
-            }
+          
 
             return res.json(data)
     }else{

@@ -2,6 +2,8 @@ import React from 'react'
 
 export default function wildlife() {
   return (
-    <div>wildlife</div>
+    <HomeLayout>
+      <div>wildlife</div>
+    </HomeLayout>
   )
 }

@@ -1,24 +1,27 @@
 import TwiraInput from "@/components/Input"
+import Layout from "@/components/Layout"
 import PrimaryButton from "@/components/PrimaryButton"
 import AuthenticationContext, { AuthenticationProvider } from "@/context/auth"
 import { Field, Form, Formik } from "formik"
 import Link from "next/link"
 import { useContext, useState } from "react"
 
-export default function LoginPage() {
+export default function SignupPage() {
     const [username,setUsername] = useState("")
     const [password,setPassword] = useState("")
+    const [cpassword,setCPassword] = useState("")
     const [loading,setLoading] = useState(false)
 
-    const {login} =  useContext(AuthenticationContext)
+    const {register} =  useContext(AuthenticationContext)
 
-    const hanleLogin = ()=>{
+    const hanleRegister = ()=>{
       if(!username || !password)return
         setLoading(!loading)
-        login({username,password})
+        register({username,password})
     }
 
     return (
+
         <div className="flex w-full  h-[100vh]">
 
           <form className="w-[500px] m-auto  bg-white p-4 rounded-md">
@@ -41,17 +44,29 @@ export default function LoginPage() {
                     type='password'
                     />
              </div>
+
+             <div className="mt-4">
+                <TwiraInput
+                    name='cpassword'
+                    placeholder='Confirm password'
+                    value={cpassword}
+                    onChange={(e)=>setCPassword(e.target.value)}
+                    type='password'
+                    />
+             </div>
+
             <div className="mt-4">
                 <PrimaryButton 
-                onClick={hanleLogin}
+                onClick={hanleRegister}
                 loading={loading}
                 title='Log In'/>
             </div>
 
 
-            <div className="py-2 text-blue-400">Don't have an account? <Link href='/signup'>signup</Link></div>
+            <div className="py-2 text-blue-400">Don't have an account? <Link href='/auth/signup'>signup</Link></div>
 
           </form>
         </div>
+
     )
   }
