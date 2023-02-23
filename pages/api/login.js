@@ -19,9 +19,12 @@ export default async (req,res) =>{
             }
 
             try{
-                const {data} = await axios.post(`${process.env.BASE_URL}api/token`,body,config);
-                accessToken = data.accessToken
 
+                const {data:accessResponse} = await axios.post(`http://127.0.0.1:8000/tawiri_api/api/v1/token/`,body,config);
+                accessToken = accessResponse.access
+                res.setHeader("Set-Cookie",cookie.serialize("refresh",accessResponse.refresh,{httpOnly:true,secure:false,sameSite:'strict',maxAge:60*60*24,path:'/'}))
+
+                console.log(accessResponse)
                 if(accessToken){
                     const userConfig = {
                         headers:{
@@ -30,13 +33,12 @@ export default async (req,res) =>{
                         }
                     }
     
-                const userData = await axios.get(`${process.env.BASE_URL}api/user`,userConfig)
+                const {data:userData} = await axios.get(`http://127.0.0.1:8000/tawiri_api/api/v1/user/`,userConfig)
     
                 res.status(200).json({user:userData,access:accessToken})
                 }
 
                 // inproduction change secure to true;
-                res.setHeader("Set-Cookie",cookie.serialize("refresh",accessToken,{httpOnly:true,secure:false,maxAge:60*60*24,path:'/'}))
                 // add sameSite:'strict'
                 
             }catch(error){
@@ -44,8 +46,9 @@ export default async (req,res) =>{
                     console.error(error.response.data)
                     console.error(error.response.status)
                     console.error(error.response.headers)
-
                     return res.status(401).status({message:error.response.data.detail});
+                }else if(error.request){
+                    return res.status(500).status({message:"Internal server error, contact admin"});
                 }
 
                 res.status(500).json({message:"Something went wrong"});
@@ -54,7 +57,7 @@ export default async (req,res) =>{
             
           
 
-            return res.json(data)
+            return res.status(200).json(data)
     }else{
 
         res.setHeader('Allow',['POST']);

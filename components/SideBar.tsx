@@ -8,19 +8,19 @@ export default function SideBar() {
             <div className='p-2 text-center border-gray-600 mb-6'>Tawiriis</div>
                 
                 <ul className='p-2'>
-                <NavLink title='Dashboard' path="" />
-                <NavLink title='Members' path="members"  />
+                <NavLink title='Dashboard' path="dashboard" />
+                <NavLink title='Members' path="dashboard/members"  />
                 <div className='mt-4 border-b border-gray-400  py-2 mb-2'>Apps</div>
-                <NavAccord title='Admistrative' path='wildlife' >
-                    <NavLink title='Administative' path="administrative" />
+                <NavAccord title='Admistrative' path='dashboard/wildlife' >
+                    <NavLink title='Administative' path="dashboard/administrative" />
                 </NavAccord>
 
-                <NavAccord title='Wildlife' path='wildlife'>
-                    <NavLink title='Wildlife' path="wildlife" />
+                <NavAccord title='Wildlife' path='dashboard/wildlife'>
+                    <NavLink title='Wildlife' path="dashboard/wildlife" />
                 </NavAccord>
 
-                <NavAccord title='Habitant' path='habitant' >
-                    <NavLink title='Habitant' path="habitant" />
+                <NavAccord title='Habitant' path='dashboard/habitant' >
+                    <NavLink title='Habitant' path="dashboard/habitant" />
                 </NavAccord>
                 <NavAccord title='Authentication' path='auth/login' >
                     <NavLink title='Login' path="auth/login" />

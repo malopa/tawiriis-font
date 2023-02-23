@@ -12,6 +12,7 @@ export default function HomeLayout({children}) {
 
   const {accessToken}  = useContext(AuthenticationContext);
   return (
+    
     <div className='bg-white text-black'>
 
     <Head>

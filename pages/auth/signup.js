@@ -61,9 +61,18 @@ export default function LoginPage() {
 
               <div className="mt-4">
               <TwiraInput
+                name='email'
+                value={telephone_number}
+                placeholder='Enter your Email'
+                onChange={(e)=>setPhone(e.target.value)}
+                />
+                </div>
+
+                <div className="mt-4">
+              <TwiraInput
                 name='telephone_number'
                 value={telephone_number}
-                placeholder='Enter your middle name'
+                placeholder='Enter your phone number'
                 onChange={(e)=>setPhone(e.target.value)}
                 />
                 </div>
