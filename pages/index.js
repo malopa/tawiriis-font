@@ -12,6 +12,7 @@ import TwiraInput from '@/components/Input'
 import OutilineButton from '@/components/OutilineButton'
 import TwiraSpinner from '@/components/TwiraSpinner'
 import TawiriAlert from '@/components/TawiriAlert'
+import Layout from '@/components/Layout'
 
 const inter = Inter({subsets: ['latin']})
 
@@ -43,27 +44,7 @@ export default function Home({children}) {
             </div>
 
 
-            <div className='my-2'>
-                <div>{username}</div>
-                <TwiraInput
-                    name='username'
-                    value={username}
-                    placeholder='Enter Username'
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-            </div>
+    </div>
 
-            <div className='my-2'>
-                <TawiriAlertDialog
-                    open={open}
-                    setOpenDialog={setOpenDialog}
-                />
-            </div>
-
-            <div>
-                <TawiriAlert _status='success'/>
-            </div>
-
-        </div>
     )
 }
