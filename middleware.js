@@ -18,4 +18,9 @@ export default function middleware(req){
         // return NextResponse.redirect('http://localhost:3000/dashboard')
     }
 
+
+    if(refresh && !url.includes('/auth')){
+        return NextResponse.redirect('http://localhost:3000/dashboard')
+    }
+
 }

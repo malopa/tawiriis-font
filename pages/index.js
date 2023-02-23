@@ -28,7 +28,7 @@ export default function Home({children}) {
   return (
     <div>
       <div>
-        <div className='p-4 flex justify-between items-center border-b h-[10vh]'>
+        <div className='p-4 flex bg-[#ff1ed760] justify-between items-center border-b h-[10vh]'>
           <div></div>
           <div>
             <Link href="/auth/login" className='mr-2 border p-2'>Log In</Link>
