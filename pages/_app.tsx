@@ -8,14 +8,24 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import { AuthenticationProvider } from '@/context/auth';
 config.autoAddCss = false; 
 
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
+
+const queryClient = QueryClient();
+
 export default function App({ Component, pageProps }: AppProps) {
-  return <AuthenticationProvider>
-  
-      <ChakraProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-      </ChakraProvider>
-      </AuthenticationProvider>
+    return <QueryClientProvider >
+        <AuthenticationProvider>
+      
+          <ChakraProvider>
+                <Layout>
+                  <Component {...pageProps} />
+                </Layout>
+          </ChakraProvider>
+        </AuthenticationProvider>
+      </QueryClientProvider>
 
 }
