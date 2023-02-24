@@ -21,7 +21,6 @@ export default function SignupPage() {
     }
 
     return (
-
         <div className="flex w-full  h-[100vh]">
 
           <form className="w-[500px] m-auto  bg-white p-4 rounded-md">

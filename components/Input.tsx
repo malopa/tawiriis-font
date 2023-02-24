@@ -6,11 +6,13 @@ export default function TwiraInput({placeholder,name,value,onChange,type}) {
     <Input placeholder={placeholder} 
     size='md'
     bg='white'
+    
     name={name}
     colorScheme='blue.400'
     value={value}
     onChange={onChange}
-    _focus={{borderColor:'gray.300'}}
+    _focus={{borderColor:'gray.500'}}
+    _hover={{borderColor:'gray.600'}}
     autoComplete='off'
     type={type}
     />

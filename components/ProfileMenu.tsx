@@ -1,9 +1,17 @@
+import AuthenticationContext from '@/context/auth';
 import { Avatar, AvatarBadge, Box, Divider, IconButton, Menu, MenuButton, MenuDivider, MenuItem, MenuList, VStack, Wrap, WrapItem } from '@chakra-ui/react'
 import { faSignOutAlt, faUserAlt, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import React,{useContext} from 'react'
 
 export default function ProfileMenu() {
+
+  const {user,logout}  = useContext(AuthenticationContext);
+
+
+  const handleOut = ()=>{
+    logout();
+  }
   return (
         <Menu >
             <MenuButton p={2}
@@ -44,7 +52,7 @@ export default function ProfileMenu() {
                 <MenuItem py='4px' textColor='black'>My Profile</MenuItem>
                 <MenuItem py='4px' textColor='black'>Edit Profile</MenuItem>
                 <MenuItem py='4px' textColor='black'>Setting</MenuItem>
-                <MenuItem py='4px' mt='5px' textColor='black' px='4px'>
+                <MenuItem onClick={handleOut} py='4px' mt='5px' textColor='black' px='4px'>
                     <FontAwesomeIcon icon={faSignOutAlt} color='gray.500' fontSize={24} /> Logout
                 </MenuItem>
             </MenuList>

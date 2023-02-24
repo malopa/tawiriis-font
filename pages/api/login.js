@@ -34,7 +34,7 @@ export default async (req,res) =>{
                     }
     
                 const {data:userData} = await axios.get(`http://127.0.0.1:8000/tawiri_api/api/v1/user/`,userConfig)
-    
+                    console.log("user",userData)
                 res.status(200).json({user:userData,access:accessToken})
                 }
 
@@ -57,7 +57,7 @@ export default async (req,res) =>{
             
           
 
-            return res.status(200).json(data)
+            //  res.status(200).json(data)
     }else{
 
         res.setHeader('Allow',['POST']);

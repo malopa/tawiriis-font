@@ -69,7 +69,7 @@ export const AuthenticationProvider = ({children})=>{
         }
         console.log(JSON.stringify(body))
 
-    const {data} = await axios.post(`${process.env.FONT_BASE_URL}api/register`,body,config)
+    const {data} = await axios.post(`http://localhost:3000/api/register`,body,config)
     login({username,password})
     console.log("res",data)
 
@@ -81,21 +81,16 @@ export const AuthenticationProvider = ({children})=>{
 }
 
 
-const logout = async ({username,password})=>{
-
+const logout = async ()=>{
     const config = {
         headers:{
             'Accept':'application/json',
             'Content-Type':'application/json'
         }
     }
-    const body = {
-        username,
-        password
-    }
-    console.log(JSON.stringify(body))
+   
     try{
-        const {data} = await axios.post(`${process.env.FONT_BASE_URL}/api/logout`,body,config)
+        const {data} = await axios.post(`http://localhost:3001/api/logout`,config)
         setUser(null)
         setAccessToken(null)
     }catch(error){
@@ -111,10 +106,15 @@ const logout = async ({username,password})=>{
 
     const checkIfUserLoggedIn = async  ()=>{
         try{
-            console.log("check token")
-            const {data}= await axios.post(`${process.env.FONT_BASE_URL}api/user`)
+            // console.log("check token")
+            // alert("CHecking USER===")
+
+            const {data}= await axios.post(`http://localhost:3000/api/user`)
+
+            console.log("refresh toke ",data)
             setUser(data.user)
             setAccessToken(data.access)
+            
         }catch(error){
             if(error.response && error.response.data){
                 setError(error.response.data.message)
@@ -125,7 +125,7 @@ const logout = async ({username,password})=>{
     }
 
     return(<AuthenticationContext.Provider 
-    value={{user,accessToken,error,login,register,logout}}
+    value={{user,accessToken,error,login,register,logout,checkIfUserLoggedIn}}
     >
         {children}
     </AuthenticationContext.Provider>

@@ -8,7 +8,7 @@ import { useContext, useState } from "react"
 
 export default function LoginPage() {
     const [first_name,setFirstName] = useState("")
-    const [telephone_number,setPhone] = useState("")
+    const [username,setUsername] = useState("")
     const [middle_name,setMiddleName] = useState("")
     const [last_name,setLastName] = useState("")
     const [email,setEmail] = useState("")
@@ -21,7 +21,10 @@ export default function LoginPage() {
     const handleRegister = ()=>{
       if(!email || !password || !telephone_number)return
         setLoading(!loading)
-        register({username,password})
+        if(password !== cpassword){
+          alert("Password do not match")
+        }
+        register({username,first_name,last_name,email,password})
     }
 
     return (
@@ -70,10 +73,10 @@ export default function LoginPage() {
 
                 <div className="mt-4">
               <TwiraInput
-                name='telephone_number'
-                value={telephone_number}
-                placeholder='Enter your phone number'
-                onChange={(e)=>setPhone(e.target.value)}
+                name='username'
+                value={username}
+                placeholder='Enter your username'
+                onChange={(e)=>setUsername(e.target.value)}
                 />
                 </div>
                 

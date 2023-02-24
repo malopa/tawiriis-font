@@ -21,7 +21,7 @@ export default async (req,res) =>{
             }
 
             try{
-                const {data:userData} = await axios.post(`${process.env.BASE_URL}tawiri_admin/api/v1/create_new_user`,body,config);
+                const {data:userData} = await axios.post(`http://127.0.0.1:8000/tawiri_api/api/v1/register`,body,config);
                 res.status(200).json({user:userData})
             }catch(error){
                 if(error.response){

@@ -7,15 +7,15 @@ export default async (req,res) =>{
     if(req.method === "POST"){
 
         if(!req.headers.cookie){
-            return res.status(405).json({message:"Not Authorized"})
+            return res.status(403).json({message:"Not Authorized"})
         }
            
-        try{
+        try{  
             const {refresh} = cookie.parse(req.headers.cookie)
             const config = {
                 headers:{
                     'Accept':"application/json",
-                    "Authorization":"Bearer "+accessToken
+                    "Content-Type":"application/json"
                 }
             }
 
@@ -23,7 +23,10 @@ export default async (req,res) =>{
                 refresh
             }
 
-            const {data} = await axios.post('http://localhost:8000/api/token/refresh/',body,config)
+
+            console.log("refresh token",refresh)
+
+            const {data} = await axios.post('http://localhost:8000/tawiri_api/api/v1/token/refresh/',body,config)
             if(data && data.access){
                 const userConfig= {
                     headers:{
@@ -32,7 +35,8 @@ export default async (req,res) =>{
                 }
 
 
-                const {data:userData} = await axios.get('http://localhost:8000/api/user/',userConfig)
+                const {data:userData} = await axios.get('http://localhost:8000/tawiri_api/api/v1/user/',userConfig)
+                console.log("data",data)
                 res.status(200).json({user:userData,access:data.access});
             }
         }catch(error){

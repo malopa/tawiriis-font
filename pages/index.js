@@ -25,55 +25,12 @@ export default function Home({children}) {
   const handleChange= ()=>{
     alert("Do something")
   }
+
+
   return (
     <div>
-      <div>
-        <div className='p-4 flex justify-between items-center border-b h-[10vh]'>
-          <div></div>
-          <div>
-            <Link href="/auth/login" className='mr-2 border p-2'>Log In</Link>
-            <Link href="/auth/signup" className='mr-2 border p-2'>Sign Up</Link>
-          </div>
-        </div>
-        <h1 className='text-2xl font-bold'>App Components</h1>
-      </div>
-      <PrimaryButton 
-      onClick={()=>setOpenDialog(!open)}   
-      title="Open Dialog"  />
-
-    <div className='my-2'>
-      <TwiraSpinner />
-    </div>
-
-    <div className='my-2'>
-    <OutilineButton 
-      onClick={handleChange}   
-      title="Open"  />
-
-    </div>
-    
-
-    <div className='my-2'>
-      <div>{username}</div>
-    <TwiraInput 
-      name='username' 
-      value={username}
-      placeholder='Enter Username'
-      onChange={(e)=>setUsername(e.target.value)}
-      />
-    </div>
+      <h1>Tawiri blog post </h1>
       
-      <div className='my-2'>
-      <TawiriAlertDialog 
-      open={open} 
-      setOpenDialog={setOpenDialog}
-      />
-      </div>
-      
-      <div>
-        <TawiriAlert _status='success' />
-      </div>
-
     </div>
 
     )
