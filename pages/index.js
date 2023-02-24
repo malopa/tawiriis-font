@@ -13,6 +13,7 @@ import OutilineButton from '@/components/OutilineButton'
 import TwiraSpinner from '@/components/TwiraSpinner'
 import TawiriAlert from '@/components/TawiriAlert'
 import Layout from '@/components/Layout'
+import Link from 'next/link'
 
 const inter = Inter({subsets: ['latin']})
 
@@ -20,31 +21,24 @@ export default function Home({children}) {
     const [open, setOpenDialog] = useState(false);
     const [username, setUsername] = useState("");
 
-
-    const handleChange = () => {
-        alert("Do something")
-    }
-    return (
-        <div>
-            <div>
-                <h1 className='text-2xl font-bold'>Some component to be used</h1>
-            </div>
-            <PrimaryButton
-                onClick={() => setOpenDialog(!open)}
-                title="Open Dialog"/>
-
-            <div className='my-2'>
-                <TwiraSpinner/>
-            </div>
-
-            <div className='my-2'>
-                <OutilineButton
-                    onClick={handleChange}
-                    title="Open"/>
-            </div>
-
-
+  const handleChange= ()=>{
+    alert("Do something")
+  }
+  return (
+    <div>
+      <div>
+        <div className='p-4 flex justify-between items-center border-b h-[10vh]'>
+          <div></div>
+          <div>
+            <Link href="/auth/login" className='mr-2 border p-2'>Log In</Link>
+            <Link href="/auth/signup" className='mr-2 border p-2'>Sign Up</Link>
+          </div>
+        </div>
+        <h1 className='text-2xl font-bold'>App Components</h1>
+      </div>
+      <PrimaryButton 
+      onClick={()=>setOpenDialog(!open)}   
+      title="Open Dialog"  />
     </div>
-
-    )
+        )
 }

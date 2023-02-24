@@ -31,12 +31,6 @@ export default function SignupPage() {
                     <h1>Log In</h1>
                 </div>
 
-                <TwiraInput
-                    name='email'
-                    value={username}
-                    placeholder='Enter your email'
-                    onChange={(e) => setUsername(e.target.value)}
-                />
                 <div className="mt-4">
                     <TwiraInput
                         name='username'
@@ -70,5 +64,5 @@ export default function SignupPage() {
 
             </form>
         </div>
-    )
+    );
 }

@@ -2,8 +2,22 @@ import { Avatar, AvatarBadge, Box, Divider, IconButton, Menu, MenuButton, MenuDi
 import { faSignOutAlt, faUserAlt, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import { logout } from '@/actions/auth';
+import { useRouter } from 'next/router';
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function ProfileMenu() {
+
+    const dispatch = useDispatch();
+    // const router = useRouter();
+    //
+    // const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+
+    const logoutHandler = () => {
+        if (dispatch && dispatch !== null && dispatch !== undefined)
+            dispatch(logout());
+    };
+
   return (
         <Menu >
             <MenuButton p={2}
@@ -25,14 +39,14 @@ export default function ProfileMenu() {
             {/* <IconButton aria-label='Search database' icon={<FontAwesomeIcon icon={faUserAlt} />} /> */}
 
         </MenuButton>
-            <MenuList border='0px'  p={2} px={4} 
-            width={250} 
+            <MenuList border='0px'  p={2} px={4}
+            width={250}
             borderRadius='md'
             minHeight={200}>
                 {/* <Avatar> */}
                 {/* </Avatar> */}
                 <MenuItem py='4px' textColor='gray.500'>
-                    <Avatar textColor='blue.600' mr='10px' 
+                    <Avatar textColor='blue.600' mr='10px'
                     name='Oshigaki Kisame' src='https://bit.ly/broken-link' />
                         <VStack textAlign='left' px='4px'>
                             {/* <Box textAlign='left'>username</Box> */}
@@ -45,7 +59,7 @@ export default function ProfileMenu() {
                 <MenuItem py='4px' textColor='black'>Edit Profile</MenuItem>
                 <MenuItem py='4px' textColor='black'>Setting</MenuItem>
                 <MenuItem py='4px' mt='5px' textColor='black' px='4px'>
-                    <FontAwesomeIcon icon={faSignOutAlt} color='gray.500' fontSize={24} /> Logout
+                    <FontAwesomeIcon icon={faSignOutAlt} color='gray.500' fontSize={24} onClick={logoutHandler}/> Logout
                 </MenuItem>
             </MenuList>
         </Menu>

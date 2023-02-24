@@ -19,6 +19,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/habitant.js", "pages/index.js", "pages/members.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/dashboard/habitant.js", "pages/index.js", "pages/members.js", "pages/dashboard/administrative.js"],
   "exclude": ["node_modules"]
 }

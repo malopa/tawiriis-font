@@ -1,6 +1,7 @@
 import { createContext,useEffect,useState} from "react";
 import axios from 'axios';
 import { useRouter } from "next/router";
+// import { access } from "fs";
 
 
 const AuthenticationContext = createContext();
@@ -15,7 +16,7 @@ export const AuthenticationProvider = ({children})=>{
 
 
     useEffect(()=>{
-        checkIfUserLoggedIn()
+        //checkIfUserLoggedIn()
     },[])
 
 
@@ -31,16 +32,26 @@ export const AuthenticationProvider = ({children})=>{
                 username,
                 password
             }
-            console.log(JSON.stringify(body))
+            console.log(`${process.env.FONT_BASE_URL}api/login`)
+            try{
+                const {data} = await axios.post(`http://localhost:3000/api/login`,body,config)
 
-        const {data} = await axios.post(`${process.env.FONT_BASE_URL}api/login`,body,config)
-        // console.log("res",data)
-
-        if(data.accessToken){
-            setAccessToken(data.accessToken)
-        }
-
-        return router.push('/')
+                if(data.accessToken){
+                    setAccessToken(data.access)
+                    setUser(data.user)
+                }
+        
+                return router.push('/dashboard')
+            }catch(err){
+                if(err.response && err.response.data){
+                    setError(err.response.data.message)
+                }else if(err.request){
+                    setError("something went wrong")
+                }else{
+                    setError("something went wrong")
+                }
+            }
+        
     }
 
 
@@ -94,7 +105,7 @@ const logout = async ({username,password})=>{
     }
 
 
-    return router.push('/auth/login')
+    return router.push('/account/login')
     }
 
 

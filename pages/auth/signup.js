@@ -1,7 +1,7 @@
 import TwiraInput from "@/components/Input"
 import Layout from "@/components/Layout"
 import PrimaryButton from "@/components/PrimaryButton"
-import AuthenticationContext, { AuthenticationProvider } from "@/context/auth"
+import AuthenticationContext, { AuthenticationProvider } from "@/context/account"
 import { Field, Form, Formik } from "formik"
 import Link from "next/link"
 import { useContext, useState } from "react"
@@ -61,9 +61,18 @@ export default function LoginPage() {
 
               <div className="mt-4">
               <TwiraInput
+                name='email'
+                value={telephone_number}
+                placeholder='Enter your Email'
+                onChange={(e)=>setPhone(e.target.value)}
+                />
+                </div>
+
+                <div className="mt-4">
+              <TwiraInput
                 name='telephone_number'
                 value={telephone_number}
-                placeholder='Enter your middle name'
+                placeholder='Enter your phone number'
                 onChange={(e)=>setPhone(e.target.value)}
                 />
                 </div>

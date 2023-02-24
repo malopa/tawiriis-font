@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from "react";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_HOST;
+const API_BASE = process.env.NEXT_PUBLIC_API_URL;
 
 interface User {
     id: string;
