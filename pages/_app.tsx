@@ -14,10 +14,10 @@ import {
 } from '@tanstack/react-query'
 
 
-const queryClient = QueryClient();
+const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
-    return <QueryClientProvider >
+    return <QueryClientProvider  client={queryClient}>
         <AuthenticationProvider>
       
           <ChakraProvider>

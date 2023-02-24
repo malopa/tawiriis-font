@@ -55,7 +55,7 @@ export const AuthenticationProvider = ({children})=>{
     }
 
 
-    const register = async ({username,password})=>{
+    const register = async ({username,first_name,last_name,email,password})=>{
 
         const config = {
             headers:{
@@ -63,7 +63,11 @@ export const AuthenticationProvider = ({children})=>{
                 'Content-Type':'application/json'
             }
         }
+        
         const body = {
+            first_name,
+            last_name,
+            email,
             username,
             password
         }

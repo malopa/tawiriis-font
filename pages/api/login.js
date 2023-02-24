@@ -1,5 +1,7 @@
 import axios from "axios";
 import cookie from 'cookie';
+    const [loading,setLoading] = useState(false)
+
 
 export default async (req,res) =>{
 
@@ -19,7 +21,6 @@ export default async (req,res) =>{
             }
 
             try{
-
                 const {data:accessResponse} = await axios.post(`http://127.0.0.1:8000/tawiri_api/api/v1/token/`,body,config);
                 accessToken = accessResponse.access
                 res.setHeader("Set-Cookie",cookie.serialize("refresh",accessResponse.refresh,{httpOnly:true,secure:false,sameSite:'strict',maxAge:60*60*24,path:'/'}))
@@ -38,8 +39,6 @@ export default async (req,res) =>{
                 res.status(200).json({user:userData,access:accessToken})
                 }
 
-                // inproduction change secure to true;
-                // add sameSite:'strict'
                 
             }catch(error){
                 if(error.response){

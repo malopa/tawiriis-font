@@ -29,6 +29,13 @@ export default function Home({children}) {
 
   return (
     <div>
+      <div className='flex h-[10vh] bg-white justify-between items-center'>
+        <div></div>
+        <div >
+          <Link href="/auth/login" className='py-2 hover:bg-green-400 rounded-sm m-2 px-4 bg-green-400' >Log In</Link>
+          <Link href="/auth/signup" className='py-2 hover:bg-green-400 m-2 px-4 rounded-sm bg-green-400'>Register</Link>
+        </div>
+      </div>
       <h1>Tawiri blog post </h1>
       
     </div>

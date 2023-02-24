@@ -18,8 +18,10 @@ export default function LoginPage() {
 
     const {register,error} =  useContext(AuthenticationContext)
 
+
     const handleRegister = ()=>{
-      if(!email || !password || !telephone_number)return
+
+      if(!email || !password || !username)return
         setLoading(!loading)
         if(password !== cpassword){
           alert("Password do not match")
@@ -52,22 +54,15 @@ export default function LoginPage() {
               onChange={(e)=>setLastName(e.target.value)}
               />
             </div>
-            <div className="mt-4">
 
-            <TwiraInput
-              name='middle_name'
-              value={middle_name}
-              placeholder='Enter your middle name'
-              onChange={(e)=>setMiddleName(e.target.value)}
-              />
-              </div>
+          
 
               <div className="mt-4">
               <TwiraInput
                 name='email'
-                value={telephone_number}
+                value={email}
                 placeholder='Enter your Email'
-                onChange={(e)=>setPhone(e.target.value)}
+                onChange={(e)=>setEmail(e.target.value)}
                 />
                 </div>
 

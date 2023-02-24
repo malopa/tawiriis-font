@@ -16,16 +16,22 @@ export default function SideBar() {
                 </NavAccord>
 
                 <NavAccord title='Wildlife' path='dashboard/wildlife'>
-                    <NavLink title='Wildlife' path="dashboard/wildlife" />
+                    <NavLink title='Country' path="dashboard/wildlife/country" />
+                    <NavLink title='Region' path="dashboard/wildlife/region" />
+                    <NavLink title='District' path="dashboard/wildlife/district" />
+                    <NavLink title='Ward' path="dashboard/wildlife/ward" />
+                    <NavLink title='Village' path="dashboard/wildlife/Village" />
+                    <NavLink title='Protection Status' path="dashboard/wildlife/protection_status" />
+                    <NavLink title='Wildlife Area' path="dashboard/wildlife/wildlife_area" />
+                    <NavLink title='Wildlife Area Location' path="dashboard/wildlife/wildlife_location" />
+                    <NavLink title='Ecosystem' path="dashboard/wildlife/ecosytem" />
+                    <NavLink title='Ecosystem' path="dashboard/wildlife/wild_ecosytem" />
                 </NavAccord>
 
                 <NavAccord title='Habitant' path='dashboard/habitant' >
                     <NavLink title='Habitant' path="dashboard/habitant" />
                 </NavAccord>
-                <NavAccord title='Authentication' path='auth/login' >
-                    <NavLink title='Login' path="auth/login" />
-                    <NavLink title='Sign Up' path="auth/signup" />
-                </NavAccord>
+               
 
                 </ul>
 
